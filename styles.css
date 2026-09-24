@@ -64,6 +64,22 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Fixed, non-scrolling backdrop for the whole site (hero excluded — it has
+   its own scroll-scrubbed visual). A true fixed-position layer is used
+   instead of background-attachment:fixed so it also holds still on iOS
+   Safari, which ignores that property on scrolling bodies. */
+.site-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-image:
+    linear-gradient(rgba(11, 10, 9, 0.87), rgba(11, 10, 9, 0.91)),
+    url("images/kelly-gang-texture.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
 img {
   max-width: 100%;
   display: block;
@@ -375,6 +391,7 @@ input:focus-visible,
 .hero {
   position: relative;
   height: 185vh;
+  padding-block: 0; /* override the generic `section` padding-block rule */
   background: var(--black);
 }
 
@@ -698,8 +715,6 @@ section {
 
 /* ------------------------------ Deals band -------------------------------- */
 .deals {
-  background: var(--rust);
-  background-image: linear-gradient(180deg, var(--rust) 0%, var(--rust-dark) 100%);
   padding-block: 60px;
 }
 
@@ -719,7 +734,7 @@ section {
 }
 
 .deal-card {
-  background: rgba(22, 21, 19, 0.35);
+  background: rgba(122, 82, 51, 0.82);
   border: 1px solid rgba(237, 232, 221, 0.35);
   border-radius: var(--radius);
   padding: 28px;
@@ -782,10 +797,6 @@ section {
 }
 
 /* ---------------------------- Category showcase --------------------------- */
-.categories {
-  background: var(--black);
-}
-
 .category-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -880,7 +891,6 @@ section {
 
 /* -------------------------------- Hours ----------------------------------- */
 .hours {
-  background: var(--black-soft);
   border-top: 1px solid var(--black-line);
   border-bottom: 1px solid var(--black-line);
 }
@@ -996,7 +1006,6 @@ section {
 
 /* -------------------------------- Footer ----------------------------------- */
 .site-footer {
-  background: var(--black);
   border-top: 1px solid var(--black-line);
   padding-block: 44px 28px;
 }
@@ -1068,12 +1077,6 @@ section {
 
 /* ============================ MENU PAGE ==================================== */
 .menu-hero {
-  background: var(--black);
-  background-image:
-    linear-gradient(180deg, rgba(22,21,19,0.94), rgba(22,21,19,0.98)),
-    url("images/kelly-gang-texture.webp");
-  background-size: cover;
-  background-position: center 20%;
   padding-block: 56px 44px;
   text-align: center;
 }
